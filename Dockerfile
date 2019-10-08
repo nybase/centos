@@ -1,4 +1,4 @@
-FROM centos:8
+FROM centos:7
 
 ENV TZ=Asia/Shanghai LANG=C.UTF-8 
 
