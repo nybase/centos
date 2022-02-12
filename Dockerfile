@@ -39,6 +39,6 @@ RUN groupadd -o -g 8080 app  &&  useradd -u 8080 --no-log-init -r -m -s /bin/bas
     echo $TOMCAT_VER; wget -N http://mirror.vorboss.net/apache/tomcat/tomcat-9/v${TOMCAT_VER}/bin/apache-tomcat-${TOMCAT_VER}.tar.gz -P /tmp ;\
     mkdir -p /usr/local/apache-tomcat; tar zxf /tmp/apache-tomcat-${TOMCAT_VER}.tar.gz -C /usr/local/apache-tomcat --strip-components 1 ;\
     rm -rf /usr/local/apache-tomcat/webapps/* || true;\ 
-    yum clean all; rm -rf /tmp; \
+    yum clean all; rm -rf /tmp/*; \
 
    
