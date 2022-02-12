@@ -7,7 +7,7 @@ RUN groupadd -o -g 8080 app  &&  useradd -u 8080 --no-log-init -r -m -s /bin/bas
     https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm \
     https://dl.fedoraproject.org/pub/epel/epel-next-release-latest-9.noarch.rpm ; \
     yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo ;\
-    yum install -y ca-certificates curl-minimal procps iproute wget tzdata telnet less vim yum-utils unzip  tcpdump  net-tools socat  traceroute jq mtr psmisc logrotate crontabs dejavu-sans-fonts java-11-openjdk-devel java-17-openjdk-devel;\
+    yum install -y ca-certificates curl-minimal ping procps iproute wget tzdata telnet less vim yum-utils unzip  tcpdump  net-tools socat  traceroute jq mtr psmisc logrotate crontabs dejavu-sans-fonts java-11-openjdk-devel java-17-openjdk-devel;\
     yum install -y iftop pcre-devel pcre2-devel \
     yum install -y runit || true; \
     yum install consul ;\
