@@ -3,7 +3,7 @@ FROM quay.io/centos/centos:stream9
 ENV TZ=Asia/Shanghai LANG=C.UTF-8
 
 RUN groupadd -o -g 8080 app  &&  useradd -u 8080 --no-log-init -r -m -s /bin/bash -o app ; \
-    dnf install \
+    dnf install -y \
     https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm \
     https://dl.fedoraproject.org/pub/epel/epel-next-release-latest-9.noarch.rpm ; \
     yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo ;\
