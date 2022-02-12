@@ -10,9 +10,10 @@ RUN groupadd -o -g 8080 app  &&  useradd -u 8080 --no-log-init -r -m -s /bin/bas
     yum install -y iftop pcre-devel pcre2-devel \
     yum install -y runit || true; \
     yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo || true ;\
-    wget -P /etc/yum.repos.d https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo; yum install -y consul || true;\
+    wget -P /etc/yum.repos.d https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo; \
+    sed -i 's/\$releasever/7/g' /etc/yum.repos.d/hashicorp.repo; yum install -y consul || true;\
     test -f /etc/pam.d/cron && sed -i '/session    required     pam_loginuid.so/c\#session    required   pam_loginuid.so' /etc/pam.d/cron ;\
-    sed -i 's/^module(load="imklog"/#module(load="imklog"/g' /etc/rsyslog.conf ;\
+    sed -i 's/^module(load="imklog"/#module(load="imklog"/g' /etc/rsyslog.conf || true;\
     mkdir -p /etc/service/cron /etc/service/syslog ;\
     bash -c 'echo -e "#!/bin/bash\nexec /usr/sbin/rsyslogd -n" > /etc/service/syslog/run' ;\
     bash -c 'echo -e "#!/bin/bash\nexec /usr/sbin/cron -f" > /etc/service/cron/run' ;\
